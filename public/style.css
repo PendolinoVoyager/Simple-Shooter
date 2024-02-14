@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  background: linear-gradient(-45deg, gray, black);
+  min-height: 99vh;
+}
+canvas.webgl {
+  position: relative;
+}
+
+.loadingScreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 30vh;
+  background: linear-gradient(-45deg, blue, rgb(17, 21, 214), blue);
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: 15px 15px
+    linear-gradient(45deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  font-size: 4rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: whitesmoke;
+  display: flex;
+  align-items: center; /* Aligns vertically */
+  justify-content: center; /* Aligns horizontally */
+  text-align: center;
+}
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 2px;
+  z-index: 1000;
+  background-color: black;
+}
