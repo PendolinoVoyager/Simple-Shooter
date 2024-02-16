@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "prod": "sudo NODE_ENV=production PORT=80 node server/server.js",
-    "build": "parcel build index.html --out-dir ./public/build --no-minify"
+    "build": "parcel build index.html --out-dir ./public/build --no-minify",
+    "rbuilds": "sudo rm -rf public/build/*"
   },
   "author": "",
   "license": "ISC",

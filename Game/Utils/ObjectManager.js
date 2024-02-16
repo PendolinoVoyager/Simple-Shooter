@@ -1,8 +1,8 @@
-import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import GameObject from './GameObject';
 import PlayerObject from '../Player/PlayerObject';
 import resources from '../Resources/resources';
+import { clone } from 'three/examples/jsm/utils/SkeletonUtils';
 export default class ObjectManager {
   objects = [];
   #defaultObjectOptions = {
@@ -15,7 +15,7 @@ export default class ObjectManager {
     this.game = game;
   }
   createPlayerObject(initPosition) {
-    const model = resources.find((r) => r.name === 'playerModel').data;
+    const model = clone(resources.find((r) => r.name === 'playerModel').data);
     const body = new CANNON.Body({
       shape: this.game.physicsWorld.playerShape,
       material: this.game.physicsWorld.playerMaterial,

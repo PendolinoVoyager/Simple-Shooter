@@ -1,5 +1,5 @@
 import { Quaternion, Raycaster, Vector3, AnimationMixer } from 'three';
-import { RaycastResult, Ray, Vec3, RAY_MODES } from 'cannon-es';
+import { Vec3 } from 'cannon-es';
 
 import PlayerControls from './PlayerControls';
 
@@ -25,9 +25,12 @@ export default class Player {
     clipActions: [],
   };
 
-  constructor(game, main) {
+  constructor(game, main, id) {
+    this.state.id = id ?? Date.now();
     this.game = game;
-    if (main) this.controls = new PlayerControls(this.game, this);
+    if (main) {
+      this.controls = new PlayerControls(this.game, this);
+    }
     this.instance = this.game.objectManager.createPlayerObject(
       this.state.position
     );
@@ -46,7 +49,6 @@ export default class Player {
       });
       this.#filterPositionTracks();
     });
-
     this.#addDebug();
   }
   #filterPositionTracks() {
@@ -149,7 +151,8 @@ export default class Player {
   #updateAnimations() {
     this.animationMixer.update(this.game.globalClock.deltaTime * 0.001);
   }
-  updateRemote(data) {
-    console.log(data);
+  updateFromState() {
+    this.instance.body.position.set(...Object.values(this.state.position));
+    this.instance.mesh.position.set(...Object.values(this.state.position));
   }
 }
